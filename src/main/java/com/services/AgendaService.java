@@ -30,6 +30,14 @@ public class AgendaService {
 		return repo.insert(agenda);
 	}
 	
+	public void delete(Integer id) {
+		repo.deleteById(id);
+	}
+	
+	public void update(Integer id) {
+		
+	}
+	
 	public Agenda fromDTO(AgendaDTO agendaDTO) {
 		return new Agenda(agendaDTO.getHash(), agendaDTO.getId(), agendaDTO.getNome(), agendaDTO.getEsfera());
 	}
