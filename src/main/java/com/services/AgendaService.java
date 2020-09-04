@@ -31,13 +31,23 @@ public class AgendaService {
 	}
 	
 	public void delete(Integer id) {
+		findById(id);
 		repo.deleteById(id);
 	}
 	
-	public void update(Integer id) {
-		
+	public Agenda update(Agenda agenda) {
+		Agenda newAgenda = findById(agenda.getId());
+		updateData(newAgenda, agenda);
+		return repo.save(newAgenda);
 	}
 	
+	private void updateData(Agenda newAgenda, Agenda agenda) {
+		newAgenda.setId(agenda.getId());
+		newAgenda.setHash(agenda.getHash());
+		newAgenda.setNome(agenda.getNome());
+		newAgenda.setEsfera(agenda.getEsfera());
+	}
+
 	public Agenda fromDTO(AgendaDTO agendaDTO) {
 		return new Agenda(agendaDTO.getHash(), agendaDTO.getId(), agendaDTO.getNome(), agendaDTO.getEsfera());
 	}
