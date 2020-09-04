@@ -7,5 +7,4 @@ import com.domain.Agenda;
 
 @Repository
 public interface AgendaRepository extends MongoRepository<Agenda, Integer>{
-
 }
