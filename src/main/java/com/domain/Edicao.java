@@ -3,21 +3,22 @@ package com.domain;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.OneToMany;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class Edicao implements Serializable{
 	private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "@id")
     private int id;
+    
     private String descricao;
     private int ano;
     private int mes;
-
+    
     @OneToMany(targetEntity = Evento.class, mappedBy = "evento")
     private List<Evento> evento;
 

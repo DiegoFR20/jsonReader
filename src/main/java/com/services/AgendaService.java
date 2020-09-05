@@ -49,6 +49,6 @@ public class AgendaService {
 	}
 
 	public Agenda fromDTO(AgendaDTO agendaDTO) {
-		return new Agenda(agendaDTO.getHash(), agendaDTO.getId(), agendaDTO.getNome(), agendaDTO.getEsfera());
+		return new Agenda(agendaDTO.getId(), agendaDTO.getHash(), agendaDTO.getNome(), agendaDTO.getEsfera(), agendaDTO.getEdicao());
 	}
 }

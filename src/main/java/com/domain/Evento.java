@@ -1,28 +1,28 @@
 package com.domain;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.OneToMany;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class Evento  implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="@id")
-    private int id;
+    private Integer id;
+	
 	private String data;
 	
 	@OneToMany(targetEntity = Obrigacao.class, mappedBy = "obrigacao")
-	private List<Obrigacao> obrigacao;
+	private Obrigacao obrigacao;
 
 	@OneToMany(targetEntity = FatoGerador.class, mappedBy = "fatoGerador")
-    private List<FatoGerador> fatoGerador;
+    private FatoGerador fatoGerador;
 
-	public Evento(int id, String data, List<Obrigacao> obrigacao, List<FatoGerador> fatoGerador) {
+	public Evento(Integer id, String data, Obrigacao obrigacao, FatoGerador fatoGerador) {
 		this.id = id;
 		this.data = data;
 		this.obrigacao = obrigacao;
@@ -32,11 +32,11 @@ public class Evento  implements Serializable{
 	public Evento() {
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -48,19 +48,19 @@ public class Evento  implements Serializable{
 		this.data = data;
 	}
 
-	public List<Obrigacao> getObrigacao() {
+	public Obrigacao getObrigacao() {
 		return obrigacao;
 	}
 
-	public void setObrigacao(List<Obrigacao> obrigacao) {
+	public void setObrigacao(Obrigacao obrigacao) {
 		this.obrigacao = obrigacao;
 	}
 
-	public List<FatoGerador> getFatoGerador() {
+	public FatoGerador getFatoGerador() {
 		return fatoGerador;
 	}
 
-	public void setFatoGerador(List<FatoGerador> fatoGerador) {
+	public void setFatoGerador(FatoGerador fatoGerador) {
 		this.fatoGerador = fatoGerador;
 	}
 

@@ -3,28 +3,26 @@ package com.domain;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class Dados  implements Serializable{
 	private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private String id;
 
     private String versao;
-
-    @OneToMany(targetEntity = RequisicaoStatus.class, mappedBy = "requisicaoStatus")
-    private List<RequisicaoStatus> requisicaoStatus;
+    
+    private RequisicaoStatus requisicaoStatus;
 
     @OneToMany(targetEntity = Agenda.class, mappedBy = "agenda")
     private List<Agenda> agenda;
 
-    public Dados(String versao, List<RequisicaoStatus> requisicaoStatus, List<Agenda> agenda) {
+    public Dados(String versao, RequisicaoStatus requisicaoStatus, List<Agenda> agenda) {
         this.versao = versao;
         this.requisicaoStatus = requisicaoStatus;
         this.agenda = agenda;
@@ -49,11 +47,11 @@ public class Dados  implements Serializable{
 		this.versao = versao;
 	}
 
-	public List<RequisicaoStatus> getRequisicaoStatus() {
+	public RequisicaoStatus getRequisicaoStatus() {
 		return requisicaoStatus;
 	}
 
-	public void setRequisicaoStatus(List<RequisicaoStatus> requisicaoStatus) {
+	public void setRequisicaoStatus(RequisicaoStatus requisicaoStatus) {
 		this.requisicaoStatus = requisicaoStatus;
 	}
 

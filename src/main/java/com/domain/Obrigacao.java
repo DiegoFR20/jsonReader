@@ -1,19 +1,17 @@
 package com.domain;
 
 import java.io.Serializable;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.OneToMany;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class Obrigacao  implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
     @Id
-    @Column(name="@id")
-    private String id;
+    private Integer id;
+    
     private String sigla;
     private String nome;
     private String genero;
@@ -22,14 +20,13 @@ public class Obrigacao  implements Serializable{
     private String periodicidade;
     private String descricao;
 
-    @OneToMany(targetEntity = Recolhimento.class, mappedBy = "recolhimento")
-    private List<Recolhimento> recolhimento;
+    private Recolhimento recolhimento;
 
     public Obrigacao() {
     }
 
-    public Obrigacao(String id, String sigla, String nome, String genero, String area, String tipo,
-            String periodicidade, String descricao, List<Recolhimento> recolhimento) {
+    public Obrigacao(Integer id, String sigla, String nome, String genero, String area, String tipo,
+            String periodicidade, String descricao, Recolhimento recolhimento) {
         this.id = id;
         this.sigla = sigla;
         this.nome = nome;
@@ -41,11 +38,11 @@ public class Obrigacao  implements Serializable{
         this.recolhimento = recolhimento;
     }
     
-    public String getId() {
+    public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -105,11 +102,11 @@ public class Obrigacao  implements Serializable{
 		this.descricao = descricao;
 	}
 
-	public List<Recolhimento> getRecolhimento() {
+	public Recolhimento getRecolhimento() {
 		return recolhimento;
 	}
 
-	public void setRecolhimento(List<Recolhimento> recolhimento) {
+	public void setRecolhimento(Recolhimento recolhimento) {
 		this.recolhimento = recolhimento;
 	}
 

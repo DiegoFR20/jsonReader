@@ -2,24 +2,23 @@ package com.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class RequisicaoStatus  implements Serializable{
 	private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name="id")
-    private String id;
+    private Integer id;
     
-    private int codigo;
+    private Integer codigo;
     private String mensagem;
     private String data;
-    private int quantidade;
+    private Integer quantidade;
     private String hashTotal;
 
-    public RequisicaoStatus(String id, int codigo, String mensagem, String data, int quantidade, String hashTotal) {
+    public RequisicaoStatus(Integer id, Integer codigo, String mensagem, String data, Integer quantidade, String hashTotal) {
         this.id = id;
         this.codigo = codigo;
         this.mensagem = mensagem;
@@ -31,19 +30,19 @@ public class RequisicaoStatus  implements Serializable{
     public RequisicaoStatus() {
     }
 
-    public String getId() {
+    public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public int getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
 
@@ -63,11 +62,11 @@ public class RequisicaoStatus  implements Serializable{
 		this.data = data;
 	}
 
-	public int getQuantidade() {
+	public Integer getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(int quantidade) {
+	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
 

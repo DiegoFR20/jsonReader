@@ -1,8 +1,10 @@
 package com.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 import com.domain.Agenda;
+import com.domain.Edicao;
 
 public class AgendaDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -11,6 +13,7 @@ public class AgendaDTO implements Serializable {
 	private String hash;
 	private String nome;
 	private String esfera;
+	private List<Edicao> edicao;
 
 	public AgendaDTO() {
 	}
@@ -20,7 +23,9 @@ public class AgendaDTO implements Serializable {
 		hash = agenda.getHash();
 		nome = agenda.getNome();
 		esfera = agenda.getEsfera();
+		edicao = agenda.getEdicao();
 	}
+
 
 	public Integer getId() {
 		return id;
@@ -52,5 +57,13 @@ public class AgendaDTO implements Serializable {
 
 	public void setEsfera(String esfera) {
 		this.esfera = esfera;
+	}
+
+	public List<Edicao> getEdicao() {
+		return edicao;
+	}
+
+	public void setEdicao(List<Edicao> edicao) {
+		this.edicao = edicao;
 	}
 }

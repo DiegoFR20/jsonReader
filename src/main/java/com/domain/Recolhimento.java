@@ -2,26 +2,26 @@ package com.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class Recolhimento  implements Serializable{
 	private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private String id;
     
+	@Id
+	private String id;
+	
     private String regra;
     private String forma;
+    private String tipo;
     private String descricao;
     private String url;
 
     public Recolhimento(String regra, String forma, String tipo, String descricao, String url) {
         this.regra = regra;
         this.forma = forma;
+        this.tipo = tipo;
         this.descricao = descricao;
         this.url = url;
     }
@@ -29,12 +29,12 @@ public class Recolhimento  implements Serializable{
     public Recolhimento() {
     }
 
-    public String getId() {
-		return id;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public String getRegra() {
@@ -95,7 +95,8 @@ public class Recolhimento  implements Serializable{
 	}
 
 	@Override
-    public String toString() {
-        return "Recolhimento [descricao=" + descricao + ", forma=" + forma + ", regra=" + regra + ", url=" + url + "]";
-    }
+	public String toString() {
+		return "Recolhimento [id=" + id + ", regra=" + regra + ", forma=" + forma + ", tipo=" + tipo + ", descricao="
+				+ descricao + ", url=" + url + "]";
+	}
 }
