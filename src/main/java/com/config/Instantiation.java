@@ -25,10 +25,10 @@ public class Instantiation implements CommandLineRunner {
 		Dados dadosJson = gson.fromJson(reader, Dados.class);
 
 		dadosRepository.save(dadosJson);
-		
-		System.out.println("ID: "+ dadosJson.getAgenda().get(0).getId());
-		System.out.println("Hash: "+ dadosJson.getAgenda().get(0).getHash());
-		System.out.println("Nome: "+ dadosJson.getAgenda().get(0).getNome());
-		System.out.println("Esfera: "+ dadosJson.getAgenda().get(0).getEsfera());
+
+		System.out.println("ID: " + dadosJson.getAgenda().get(0).getId());
+		System.out.println("Hash: " + dadosJson.getAgenda().get(0).getHash());
+		System.out.println("Nome: " + dadosJson.getAgenda().get(0).getNome());
+		System.out.println("Esfera: " + dadosJson.getAgenda().get(0).getEsfera());
 	}
 }

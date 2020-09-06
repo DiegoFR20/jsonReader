@@ -3,10 +3,11 @@ package com.domain;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.OneToMany;
+
+import com.google.gson.annotations.SerializedName;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,12 +18,11 @@ public class Agenda implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name= "id")
+	@SerializedName("@id")
 	private Integer id;
 
-	
 	@EmbeddedId
-	@Column(name="hash")
+	@SerializedName("@hash")
 	private String hash;
 
 	private String nome;
@@ -35,6 +35,7 @@ public class Agenda implements Serializable {
 	}
 
 	public Agenda(Integer id, String hash, String nome, String esfera, List<Edicao> edicao) {
+		super();
 		this.id = id;
 		this.hash = hash;
 		this.nome = nome;

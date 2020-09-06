@@ -9,10 +9,63 @@
 
   <title>Json Reader</title>
 </head>
+<style>
+  table, th, tr, td{
+    border: 1.5px solid rgb(177, 177, 177);
+    border-collapse: collapse;
+    font-size: 1.1em;
+  }
+
+  .td{    
+    width: 335px;
+    height: 35px;
+    text-align: center;
+  }
+
+  .td:nth-child(1), .td:nth-child(4){
+    width: 100px;
+  }
+
+</style>
 
 <body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    $.ajax({
+      url: "http://localhost:8080",
+      success: function (json) {
+        const agenda = json[0].agenda[0];
+        const table = $("#data");
+        for (i = 0; i < 3; i++) {
+          var row = $('<tr>'),
+            id = $('<td>').text(agenda.id).attr('class', 'td'),
+            hash = $('<td>').text(agenda.hash).attr('class', 'td'),
+            nome = $('<td>').text(agenda.nome).attr('class', 'td'),
+            esfera = $('<td>').text(agenda.esfera).attr('class', 'td');
+
+          row.append(id);
+          row.append(hash);
+          row.append(nome);
+          row.append(esfera);
+        }
+
+        table.append(row);
+      },
+      error: function (e) {
+        alert(e);
+      }
+    });
+  </script>
+
+  <table id="data">
+    <tr>
+      <th class="th">Id</th>
+      <th class="th">Hash</th>
+      <th class="th">Nome</th>
+      <th class="th">Esfera</th>
+    </tr>
+  </table>
 </body>
 
 </html>
