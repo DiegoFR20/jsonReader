@@ -51,11 +51,14 @@
         }
 
         table.append(row);
+
+        console.log('ID | HASH                          |           NOME               |    ESFERA')
+        console.log(agenda.id, agenda.hash, agenda.nome, agenda.esfera);
       },
       error: function (e) {
         alert(e);
       }
-    });
+    });    
   </script>
 
   <table id="data">
