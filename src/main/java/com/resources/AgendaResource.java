@@ -35,24 +35,24 @@ public class AgendaResource {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<AgendaDTO> findById(@PathVariable Integer id) {
 		Agenda agenda = service.findById(id);
-
+		
 		return ResponseEntity.ok().body(new AgendaDTO(agenda));
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody AgendaDTO agendaDTO) {
 		Agenda agenda = service.fromDTO(agendaDTO);
-		agenda = service.insert(agenda);		
+		agenda = service.insert(agenda);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(agenda.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody AgendaDTO agendaDTO, @PathVariable Integer id) {
 		Agenda agenda = service.fromDTO(agendaDTO);

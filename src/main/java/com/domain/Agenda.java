@@ -17,23 +17,24 @@ public class Agenda implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name= "id")
 	private Integer id;
 
+	
 	@EmbeddedId
-	@Column(name = "hash")
+	@Column(name="hash")
 	private String hash;
 
 	private String nome;
 	private String esfera;
-	
-	 @OneToMany(targetEntity = Edicao.class, mappedBy = "edicao")
-	private List<Edicao> edicao ;
+
+	@OneToMany(targetEntity = Edicao.class, mappedBy = "edicao")
+	private List<Edicao> edicao;
 
 	public Agenda() {
 	}
 
 	public Agenda(Integer id, String hash, String nome, String esfera, List<Edicao> edicao) {
-		super();
 		this.id = id;
 		this.hash = hash;
 		this.nome = nome;
@@ -72,7 +73,7 @@ public class Agenda implements Serializable {
 	public void setEsfera(String esfera) {
 		this.esfera = esfera;
 	}
-	
+
 	public List<Edicao> getEdicao() {
 		return edicao;
 	}
@@ -80,7 +81,7 @@ public class Agenda implements Serializable {
 	public void setEdicao(List<Edicao> edicao) {
 		this.edicao = edicao;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
